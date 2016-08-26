@@ -3,6 +3,7 @@
 const express = require('express');
 const http = require('http');
 const stylus = require('stylus');
+const nib = require('nib');
 
 const minify = require('./minify.js');
 
