@@ -4,6 +4,8 @@ const express = require('express');
 const http = require('http');
 const stylus = require('stylus');
 
+const minify = require('./minify.js');
+
 class WebServer {
 	constructor() {
 		this.app = express();
@@ -29,6 +31,13 @@ class WebServer {
 					.use(nib())
 			}
 		}));
+
+		app.get('/tnnuts.min.js', (req, res) => {
+			minify(result => {
+				res.contentType('tnnuts.min.js');
+				res.end(result);
+			});
+		});
 
 		app.get('/', (req, res) => {
 			try {
